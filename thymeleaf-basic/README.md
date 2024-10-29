@@ -94,3 +94,18 @@ Thymeleaf는 여러 기본 객체를 제공하여 다양한 기능에 접근할 
 
 - **`@`**: 스프링 컨텍스트에서 빈(bean)에 접근할 수 있습니다.
   - 예시: `${@helloBean.hello('Spring!')}`
+
+## 타임리프 유틸리티 객체들
+
+- `#message`: 메시지, 국제화 처리
+- `#uris`: URI 이스케이프 지원
+- `#dates`: `java.util.Date` 서식 지원
+- `#calendars`: `java.util.Calendar` 서식 지원
+- `#temporals`: 자바8 날짜 서식 지원
+- `#numbers`: 숫자 서식 지원
+- `#strings`: 문자 관련 편의 기능
+- `#objects`: 객체 관련 기능 제공
+- `#bools`: boolean 관련 기능 제공
+- `#arrays`: 배열 관련 기능 제공
+- `#lists`, `#sets`, `#maps`: 컬렉션 관련 기능 제공
+- `#ids`: 아이디 처리 관련 기능 제공 (자세한 설명은 후술)
