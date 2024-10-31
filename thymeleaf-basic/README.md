@@ -109,3 +109,75 @@ Thymeleaf는 여러 기본 객체를 제공하여 다양한 기능에 접근할 
 - `#arrays`: 배열 관련 기능 제공
 - `#lists`, `#sets`, `#maps`: 컬렉션 관련 기능 제공
 - `#ids`: 아이디 처리 관련 기능 제공 (자세한 설명은 후술)
+
+## 타임리프 URL 표현식
+
+### 1. 단순 URL
+- `@{/hello}` → `/hello`
+
+### 2. 쿼리 파라미터
+- `@{/hello(param1=${param1}, param2=${param2})}`
+- 결과: `/hello?param1=data1&param2=data2`
+
+### 3. 경로 변수
+- `@{/hello/{param1}/{param2}(param1=${param1}, param2=${param2})}`
+- 결과: `/hello/data1/data2`
+
+### 4. 경로 변수 + 쿼리 파라미터
+- `@{/hello/{param1}(param1=${param1}, param2=${param2})}`
+- 결과: `/hello/data1?param2=data2`
+
+### 5. 경로 표현
+- 상대경로: `hello`
+- 절대경로: `/hello`
+
+## 리터럴 (Literals)
+
+리터럴은 소스 코드에서 고정된 값을 나타내는 표기법
+
+### 타임리프의 리터럴 종류
+
+- 문자: `'hello'`
+- 숫자: `10`
+- 불린: `true`, `false`
+- null: `null`
+
+### 문자 리터럴 사용 규칙
+
+1. 기본적으로 작은 따옴표(`'`)로 감싸야 함
+   예: `<span th:text="'hello'">`
+
+2. 공백 없이 이어지는 경우 따옴표 생략 가능
+   예: `<span th:text="hello">`
+
+3. 공백이 포함된 경우 반드시 따옴표 사용
+   예: `<span th:text="'hello world!'">`
+
+### 리터럴 대체 (Literal substitutions)
+
+변수와 텍스트를 편리하게 조합할 수 있는 문법:
+`<span th:text="|hello ${data}|">`
+
+
+## 타임리프 비교 연산 및 조건식
+
+### 비교 연산
+- HTML 엔티티 사용 주의:
+    - `>` (gt)
+    - `<` (lt)
+    - `>=` (ge)
+    - `<=` (le)
+    - `!` (not)
+    - `==` (eq)
+    - `!=` (neq, ne)
+
+### 조건식
+- 자바의 조건식과 유사
+
+### Elvis 연산자
+- 조건식의 편의 버전
+
+### No-Operation
+- `_` 사용 시 타임리프가 실행되지 않은 것처럼 동작
+- HTML 내용을 그대로 활용 가능
+- 예: 데이터가 없을 때 "데이터가 없습니다." 문구 그대로 출력
